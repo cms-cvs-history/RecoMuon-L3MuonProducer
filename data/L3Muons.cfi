@@ -1,7 +1,6 @@
 module L3Muons = L3MuonProducer {
 
-    InputTag MuonCollectionLabel = standAloneMuons
-#    InputTag TrackerCollectionLabel = ctfWithMaterialTracks
+    InputTag MuonCollectionLabel = L2Muons
 
     using MuonServiceProxy
     
@@ -22,7 +21,7 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutDT = 10.
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
-	string ckfBuilder = "CkfTrajectoryBuilder"
+	string TkTrackBuilder = "CkfTrajectoryBuilder"
 	
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
