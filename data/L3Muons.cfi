@@ -1,4 +1,4 @@
-module l3Muons = L3MuonProducer {
+module L3Muons = L3MuonProducer {
 
     InputTag MuonCollectionLabel = standAloneMuons
 #    InputTag TrackerCollectionLabel = ctfWithMaterialTracks

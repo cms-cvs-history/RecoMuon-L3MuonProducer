@@ -23,6 +23,6 @@ replace CkfTrajectoryBuilder.alwaysUseInvalidHits = false
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy_global.cff"
 
-include "RecoMuon/L3MuonProducer/data/L3MuonProducer.cfi"
+include "RecoMuon/L3MuonProducer/data/L3Muons.cfi"
 
 sequence l3MuonProducer = { l3Muons }
