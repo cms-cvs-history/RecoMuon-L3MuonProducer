@@ -1,6 +1,7 @@
 module L3Muons = L3MuonProducer {
 
     InputTag MuonCollectionLabel = L2Muons
+    bool MuonTrajectoryAvailable = false
 
     using MuonServiceProxy
     
@@ -10,6 +11,8 @@ module L3Muons = L3MuonProducer {
     }
         
     PSet L3TrajBuilderParameters = {
+	bool RegionalSeedFlag = true
+	bool TkTrajectoryAvailable = false
 	string TkTrackCollectionLabel = ""
 	string TrackRecHitBuilder = "WithTrackAngle"
 	double Chi2CutTrackMatcher = 300.0
