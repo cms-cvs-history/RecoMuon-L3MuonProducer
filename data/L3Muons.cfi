@@ -24,7 +24,7 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutDT = 10.
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
-	string TkTrackBuilder = "CkfTrajectoryBuilder"
+	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
