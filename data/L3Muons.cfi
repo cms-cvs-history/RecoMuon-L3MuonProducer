@@ -11,6 +11,7 @@ module L3Muons = L3MuonProducer {
     }
         
     PSet L3TrajBuilderParameters = {
+	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true
 	bool TkTrajectoryAvailable = false
 	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
