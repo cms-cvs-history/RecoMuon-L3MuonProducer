@@ -2,6 +2,7 @@ module L3Muons = L3MuonProducer {
 
     InputTag MuonCollectionLabel = L2Muons
     bool MuonTrajectoryAvailable = false
+    string MuonSeededTracksInstance = "L2Seeded"
 
     using MuonServiceProxy
     
@@ -13,10 +14,11 @@ module L3Muons = L3MuonProducer {
     PSet L3TrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true
+	string MuonSeededTracksInstance = "L2Seeded"
 	bool TkTrajectoryAvailable = false
 	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
 	string TrackRecHitBuilder = "WithTrackAngle"
-	double Chi2CutTrackMatcher = 300.0
+	double Chi2CutTrackMatcher = 500.0
 	int32 MuonHitsOption = 1
 	int32 Direction = 0 
 	double PtCut = 1.0 
@@ -42,24 +44,26 @@ module L3Muons = L3MuonProducer {
 	PSet SeedGeneratorParameters = {
 	    untracked bool performMuonIntegrityMonitor = false
             string Prop = "null"
+
+            //for TrackerSeedGenerator
 	    double ErrorRescaleFactor = 1.0
 	    int32 SeedOption = 2           
             int32 Direction = 0 
             int32 MaxSeeds = 10
-
             string HitProducer = "siPixelRecHits"
-            double ptMin=1.0
-            double originRadius=0.2
-            double originHalfLength=0.2
-            double deltaEtaRegion = 0.1
-            double deltaPhiRegion = 0.1
-            string TTRHBuilder        =  "WithTrackAngle"
-            InputTag JetSrc = icone5Tau1
-            string vertexSrc ="pixelVertices"
 
+            //for CombinatorialSeedGneratorFromPixel
+            // -- also called from RegionalPixelSeedGeneratorFromTrk-EDProducer
+            double ptMin = 1.0
+	    double originZPosition = 0.0
+            double originRadius = 0.2
+            double originHalfLength = 15.0
+            string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits
+	    
+            //for MuonUpdatorAtVertex in TrackerSeedGenerator
             PSet UpdatorParameters = {
-	         string InPropagator = "PropagatorWithMaterial"
-	         string OutPropagator = "SteppingHelixPropagatorAny"
+		string InPropagator = "PropagatorWithMaterial"
+		string OutPropagator = "SteppingHelixPropagatorAny"
 	    }
 		
         }
