@@ -40,6 +40,7 @@ module L3Muons = L3MuonProducer {
 	}
 
 	PSet SeedGeneratorParameters = {
+	    untracked bool performMuonIntegrityMonitor = false
             string Prop = "null"
 	    double ErrorRescaleFactor = 1.0
 	    int32 SeedOption = 2           
