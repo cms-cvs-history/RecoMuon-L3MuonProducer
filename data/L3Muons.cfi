@@ -9,6 +9,7 @@ module L3Muons = L3MuonProducer {
     PSet TrackLoaderParameters = {
 	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
 	untracked bool PutTrajectoryIntoEvent = false
+	bool VertexConstraint = false
     }
         
     PSet L3TrajBuilderParameters = {
