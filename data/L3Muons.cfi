@@ -37,16 +37,12 @@ module L3Muons = L3MuonProducer {
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}		
 	
-	PSet UpdatorParameters = {
-	    string InPropagator = "PropagatorWithMaterial"
-	    string OutPropagator = "SteppingHelixPropagatorAny"
-	}
-
 	PSet SeedGeneratorParameters = {
 	    untracked bool performMuonIntegrityMonitor = false
             string Prop = "null"
 
             //for TrackerSeedGenerator
+	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
 	    double ErrorRescaleFactor = 1.0
 	    int32 SeedOption = 2           
             int32 Direction = 0 
@@ -61,12 +57,7 @@ module L3Muons = L3MuonProducer {
             double originHalfLength = 15.0
             string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits
 	    
-            //for MuonUpdatorAtVertex in TrackerSeedGenerator
-            PSet UpdatorParameters = {
-		string InPropagator = "PropagatorWithMaterial"
-		string OutPropagator = "SteppingHelixPropagatorAny"
-	    }
-		
+            //for MuonUpdatorAtVertex in TrackerSeedGenerator		
         }
      }
 
