@@ -2,20 +2,20 @@ module L3Muons = L3MuonProducer {
 
     InputTag MuonCollectionLabel = L2Muons
     bool MuonTrajectoryAvailable = false
-    string MuonSeededTracksInstance = "L2Seeded"
 
     using MuonServiceProxy
     
     PSet TrackLoaderParameters = {
 	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
 	untracked bool PutTrajectoryIntoEvent = false
+	untracked bool PutTkTrackIntoEvent = true
+        untracked string MuonSeededTracksInstance = "L2Seeded"
 	bool VertexConstraint = false
     }
         
     PSet L3TrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true
-	string MuonSeededTracksInstance = "L2Seeded"
 	bool TkTrajectoryAvailable = false
 	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
 	string TrackRecHitBuilder = "WithTrackAngle"
@@ -30,6 +30,15 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
+	PSet TrackTransformer = {
+	    string Fitter = "KFFitterForRefitOutsideIn"
+	    string Smoother = "KFSmootherForRefitOutsideIn"
+	    string TrackerRecHitBuilder = "WithTrackAngle"
+	    string MuonRecHitBuilder = "MuonRecHitBuilder"
+	    
+	    string RefitDirection = "outsideIn"
+	}
+
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
 	    string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
@@ -37,9 +46,12 @@ module L3Muons = L3MuonProducer {
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}		
 	
+
 	PSet SeedGeneratorParameters = {
 	    untracked bool performMuonIntegrityMonitor = false
             string Prop = "null"
+
+
 
             //for TrackerSeedGenerator
 	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
@@ -57,7 +69,8 @@ module L3Muons = L3MuonProducer {
             double originHalfLength = 15.0
             string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits
 	    
-            //for MuonUpdatorAtVertex in TrackerSeedGenerator		
+
+
         }
      }
 
