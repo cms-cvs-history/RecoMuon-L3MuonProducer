@@ -1,8 +1,8 @@
 module L3Muons = L3MuonProducer {
 
-    InputTag MuonCollectionLabel = L2Muons
-    bool MuonTrajectoryAvailable = false
-
+    InputTag MuonCollectionLabel = L2Muons:UpdatedAtVtx
+    bool MuonTrajectoryAvailable = true
+    
     using MuonServiceProxy
     
     PSet TrackLoaderParameters = {
@@ -12,14 +12,12 @@ module L3Muons = L3MuonProducer {
         untracked string MuonSeededTracksInstance = "L2Seeded"
 	bool VertexConstraint = false
     }
-        
+    
     PSet L3TrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true
-	bool TkTrajectoryAvailable = false
-	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
+	bool TkTrajectoryAvailable = true
 	string TrackRecHitBuilder = "WithTrackAngle"
-	double Chi2CutTrackMatcher = 500.0
 	int32 MuonHitsOption = 1
 	int32 Direction = 0 
 	double PtCut = 1.0 
@@ -30,12 +28,20 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
+	string StateOnTrackerBoundOutPropagator = "SteppingHelixPropagatorAlong"	
+	PSet GlobalMuonTrackMatcher = {
+	    untracked bool performMuonIntegrityMonitor = false
+	    untracked bool MatchAtSurface = true		
+	    double Chi2Cut = 300.0
+	    double MinP = 2.5
+	    double MinPt = 1.0
+	}
+	
 	PSet TrackTransformer = {
 	    string Fitter = "KFFitterForRefitOutsideIn"
 	    string Smoother = "KFSmootherForRefitOutsideIn"
 	    string TrackerRecHitBuilder = "WithTrackAngle"
-	    string MuonRecHitBuilder = "MuonRecHitBuilder"
-	    
+	    string MuonRecHitBuilder = "MuonRecHitBuilder"	    
 	    string RefitDirection = "outsideIn"
 	}
 
@@ -51,8 +57,6 @@ module L3Muons = L3MuonProducer {
 	    untracked bool performMuonIntegrityMonitor = false
             string Prop = "null"
 
-
-
             //for TrackerSeedGenerator
 	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
 	    double ErrorRescaleFactor = 1.0
@@ -67,10 +71,7 @@ module L3Muons = L3MuonProducer {
 	    double originZPosition = 0.0
             double originRadius = 0.2
             double originHalfLength = 15.0
-            string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits
-	    
-
-
+            string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits  
         }
      }
 
