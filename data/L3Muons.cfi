@@ -35,6 +35,8 @@ module L3Muons = L3MuonProducer {
 	    double Chi2Cut = 300.0
 	    double MinP = 2.5
 	    double MinPt = 1.0
+	    double DeltaEtaCut = 0.2
+	    double DeltaPhiCut = 0.2
 	}
 	
 	PSet TrackTransformer = {
@@ -59,8 +61,10 @@ module L3Muons = L3MuonProducer {
 
             //for TrackerSeedGenerator
 	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
+	    string RSPropagator = "SteppingHelixPropagatorAny"
+	    double maxRoadChi2 = 40.0
 	    double ErrorRescaleFactor = 1.0
-	    int32 SeedOption = 2           
+	    int32 SeedOption = 2         
             int32 Direction = 0 
             int32 MaxSeeds = 10
             string HitProducer = "siPixelRecHits"
