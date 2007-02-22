@@ -29,6 +29,8 @@ module L3Muons = L3MuonProducer {
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
 	string StateOnTrackerBoundOutPropagator = "SteppingHelixPropagatorAlong"	
+	string TrackerPropagator = "SteppingHelixPropagatorAny"
+
 	PSet GlobalMuonTrackMatcher = {
 	    untracked bool performMuonIntegrityMonitor = false
 	    untracked bool MatchAtSurface = true		
@@ -38,14 +40,14 @@ module L3Muons = L3MuonProducer {
 	    double DeltaEtaCut = 0.2
 	    double DeltaPhiCut = 0.2
 	}
-	
+
 	PSet TrackTransformer = {
 	    string Fitter = "KFFitterForRefitOutsideIn"
 	    string Smoother = "KFSmootherForRefitOutsideIn"
 	    string TrackerRecHitBuilder = "WithTrackAngle"
-	    string MuonRecHitBuilder = "MuonRecHitBuilder"	    
+	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string RefitDirection = "outsideIn"
-	}
+	}	
 
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
@@ -71,10 +73,6 @@ module L3Muons = L3MuonProducer {
 
             //for CombinatorialSeedGneratorFromPixel
             // -- also called from RegionalPixelSeedGeneratorFromTrk-EDProducer
-            double ptMin = 1.0
-	    double originZPosition = 0.0
-            double originRadius = 0.2
-            double originHalfLength = 15.0
             string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits  
         }
      }
