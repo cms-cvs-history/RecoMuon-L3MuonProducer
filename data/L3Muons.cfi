@@ -42,11 +42,11 @@ module L3Muons = L3MuonProducer {
 	}
 
 	PSet TrackTransformer = {
-	    string Fitter = "KFFitterForRefitOutsideIn"
-	    string Smoother = "KFSmootherForRefitOutsideIn"
+	    string Fitter = "KFFitterForRefitInsideOut"
+	    string Smoother = "KFSmootherForRefitInsideOut"
 	    string TrackerRecHitBuilder = "WithTrackAngle"
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
-	    string RefitDirection = "outsideIn"
+	    string RefitDirection = "insideOut"
 	}	
 
 	PSet RefitterParameters = {
