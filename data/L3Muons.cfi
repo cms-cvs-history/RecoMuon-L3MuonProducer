@@ -28,22 +28,25 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
-	string StateOnTrackerBoundOutPropagator = "SteppingHelixPropagatorAlong"	
+	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
+	string TrackerPropagator = "SteppingHelixPropagatorAny"
+
 	PSet GlobalMuonTrackMatcher = {
 	    untracked bool performMuonIntegrityMonitor = false
-	    untracked bool MatchAtSurface = true		
 	    double Chi2Cut = 300.0
 	    double MinP = 2.5
 	    double MinPt = 1.0
+	    double DeltaEtaCut = 0.2
+	    double DeltaPhiCut = 0.2
 	}
-	
+
 	PSet TrackTransformer = {
-	    string Fitter = "KFFitterForRefitOutsideIn"
-	    string Smoother = "KFSmootherForRefitOutsideIn"
+	    string Fitter = "KFFitterForRefitInsideOut"
+	    string Smoother = "KFSmootherForRefitInsideOut"
 	    string TrackerRecHitBuilder = "WithTrackAngle"
-	    string MuonRecHitBuilder = "MuonRecHitBuilder"	    
-	    string RefitDirection = "outsideIn"
-	}
+	    string MuonRecHitBuilder = "MuonRecHitBuilder"
+	    string RefitDirection = "insideOut"
+	}	
 
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
@@ -59,18 +62,17 @@ module L3Muons = L3MuonProducer {
 
             //for TrackerSeedGenerator
 	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
+	    string RSAnyPropagator = "SteppingHelixPropagatorAny"
+	    string RSAlongPropagator = "SteppingHelixPropagatorAlong"
+	    double maxRoadChi2 = 40.0
 	    double ErrorRescaleFactor = 1.0
-	    int32 SeedOption = 2           
+	    int32 SeedOption = 2         
             int32 Direction = 0 
             int32 MaxSeeds = 10
             string HitProducer = "siPixelRecHits"
 
             //for CombinatorialSeedGneratorFromPixel
             // -- also called from RegionalPixelSeedGeneratorFromTrk-EDProducer
-            double ptMin = 1.0
-	    double originZPosition = 0.0
-            double originRadius = 0.2
-            double originHalfLength = 15.0
             string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits  
         }
      }
