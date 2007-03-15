@@ -28,12 +28,11 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
-	string StateOnTrackerBoundOutPropagator = "SteppingHelixPropagatorAlong"	
+	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
 	string TrackerPropagator = "SteppingHelixPropagatorAny"
 
 	PSet GlobalMuonTrackMatcher = {
 	    untracked bool performMuonIntegrityMonitor = false
-	    untracked bool MatchAtSurface = true		
 	    double Chi2Cut = 300.0
 	    double MinP = 2.5
 	    double MinPt = 1.0
@@ -63,7 +62,8 @@ module L3Muons = L3MuonProducer {
 
             //for TrackerSeedGenerator
 	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
-	    string RSPropagator = "SteppingHelixPropagatorAny"
+	    string RSAnyPropagator = "SteppingHelixPropagatorAny"
+	    string RSAlongPropagator = "SteppingHelixPropagatorAlong"
 	    double maxRoadChi2 = 40.0
 	    double ErrorRescaleFactor = 1.0
 	    int32 SeedOption = 2         
