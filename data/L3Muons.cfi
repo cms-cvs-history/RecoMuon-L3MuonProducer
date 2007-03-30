@@ -54,27 +54,9 @@ module L3Muons = L3MuonProducer {
 	    string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}		
-	
 
-	PSet SeedGeneratorParameters = {
-	    untracked bool performMuonIntegrityMonitor = false
-            string Prop = "null"
+include  "RecoMuon/TrackerSeedGenerator/data/TrackerSeedGeneratorBC.cfi"
+#include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelPairs.cfi"
 
-            //for TrackerSeedGenerator
-	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
-	    string RSAnyPropagator = "SteppingHelixPropagatorAny"
-	    string RSAlongPropagator = "SteppingHelixPropagatorAlong"
-	    double maxRoadChi2 = 40.0
-	    double ErrorRescaleFactor = 1.0
-	    int32 SeedOption = 2         
-            int32 Direction = 0 
-            int32 MaxSeeds = 10
-            string HitProducer = "siPixelRecHits"
-
-            //for CombinatorialSeedGneratorFromPixel
-            // -- also called from RegionalPixelSeedGeneratorFromTrk-EDProducer
-            string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits  
-        }
-     }
-
+  }
 }
