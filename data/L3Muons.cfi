@@ -5,14 +5,8 @@ module L3Muons = L3MuonProducer {
     
     using MuonServiceProxy
     
-    PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
-	untracked bool PutTrajectoryIntoEvent = true
-	untracked bool PutTkTrackIntoEvent = true
-        untracked string MuonSeededTracksInstance = "L2Seeded"
-	bool VertexConstraint = false
-    }
-    
+    using MuonTrackLoaderForL3    
+
     PSet L3TrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true

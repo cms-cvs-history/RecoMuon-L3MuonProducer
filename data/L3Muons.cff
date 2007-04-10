@@ -21,6 +21,8 @@ replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
 replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =0
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
+include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
+
 include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/L3MuonProducer/data/L3Muons.cfi"
 
