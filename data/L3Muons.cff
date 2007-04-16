@@ -18,7 +18,7 @@ include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
 es_module muonCkfTrajectoryBuilder = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
 replace muonCkfTrajectoryBuilder.ComponentName = "muonCkfTrajectoryBuilder"
 replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
-replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =0
+replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =3
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
