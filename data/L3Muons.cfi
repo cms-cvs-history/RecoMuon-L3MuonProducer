@@ -10,7 +10,7 @@ module L3Muons = L3MuonProducer {
     PSet L3TrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true
-	bool TkTrajectoryAvailable = true
+	bool TkTrajectoryAvailable = false
 	string TrackRecHitBuilder = "WithTrackAngle"
 	int32 MuonHitsOption = 1
 	int32 Direction = 0 
@@ -21,6 +21,7 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
+	string KFFitter = "KFFitter"
 	
 	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
 	string TrackerPropagator = "SteppingHelixPropagatorAny"
