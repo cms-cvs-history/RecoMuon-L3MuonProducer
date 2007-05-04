@@ -74,6 +74,8 @@ module L3Muons = L3MuonProducer {
 	    
 	    bool debug = false
 	}
-	
+
+	PSet RegionBuilderParameters = {}	
+
     }
 }
