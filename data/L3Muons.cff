@@ -18,9 +18,15 @@ include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
 es_module muonCkfTrajectoryBuilder = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
 replace muonCkfTrajectoryBuilder.ComponentName = "muonCkfTrajectoryBuilder"
 replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
-replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =0
+replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =5
+
+es_module ttrhb4Pixel = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace ttrhb4Pixel.StripCPE = "Fake"
+replace ttrhb4Pixel.ComponentName = "PixelTTRHBuilderWithoutAngle"
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
+include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
+
 include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/L3MuonProducer/data/L3Muons.cfi"
 
