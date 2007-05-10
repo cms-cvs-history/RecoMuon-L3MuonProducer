@@ -5,18 +5,12 @@ module L3Muons = L3MuonProducer {
     
     using MuonServiceProxy
     
-    PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
-	untracked bool PutTrajectoryIntoEvent = true
-	untracked bool PutTkTrackIntoEvent = true
-        untracked string MuonSeededTracksInstance = "L2Seeded"
-	bool VertexConstraint = false
-    }
-    
+    using MuonTrackLoaderForL3    
+
     PSet L3TrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = true
-	bool TkTrajectoryAvailable = true
+	bool TkTrajectoryAvailable = false
 	string TrackRecHitBuilder = "WithTrackAngle"
 	int32 MuonHitsOption = 1
 	int32 Direction = 0 
@@ -27,13 +21,13 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
+	string KFFitter = "KFFitter"
 	
-	string StateOnTrackerBoundOutPropagator = "SteppingHelixPropagatorAlong"	
+	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
 	string TrackerPropagator = "SteppingHelixPropagatorAny"
 
 	PSet GlobalMuonTrackMatcher = {
 	    untracked bool performMuonIntegrityMonitor = false
-	    untracked bool MatchAtSurface = true		
 	    double Chi2Cut = 300.0
 	    double MinP = 2.5
 	    double MinPt = 1.0
@@ -48,7 +42,7 @@ module L3Muons = L3MuonProducer {
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string RefitDirection = "insideOut"
 	}	
-
+	
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
 	    string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
@@ -56,25 +50,32 @@ module L3Muons = L3MuonProducer {
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}		
 	
+	#include "RecoMuon/TrackerSeedGenerator/data/TrackerSeedGeneratorBC.cfi"
+      include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelPairs.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelTriplets.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearch.cfi"
+	
+	PSet MuonRSBuilder = {
+           #category: MuonRSTrajectoryBuilder
+	    string propagatorName = "SteppingHelixPropagatorAny"
+	    
+	    double maxChi2Road = 40.0
+	    double maxChi2Hit = 40.0
+	    
+	    uint32 maxTrajectories = 30
+	    
+	    bool dynamicMaxNumberOfHitPerModule = true
+	    vuint32 maxTrajectoriesThreshold = { 10, 25 }
+	    vuint32 numberOfHitPerModuleThreshold = { 3, 1 }
+	    uint32 numberOfHitPerModule = 1000 #no cut then
+	    
+	    uint32 minNumberOfHitOnCandidate = 4
+	    bool outputAllTraj =true
+	    
+	    bool debug = false
+	}
 
-	PSet SeedGeneratorParameters = {
-	    untracked bool performMuonIntegrityMonitor = false
-            string Prop = "null"
+	PSet RegionBuilderParameters = {}	
 
-            //for TrackerSeedGenerator
-	    string UpdatorPropagator = "SteppingHelixPropagatorOpposite"
-	    string RSPropagator = "SteppingHelixPropagatorAny"
-	    double maxRoadChi2 = 40.0
-	    double ErrorRescaleFactor = 1.0
-	    int32 SeedOption = 2         
-            int32 Direction = 0 
-            int32 MaxSeeds = 10
-            string HitProducer = "siPixelRecHits"
-
-            //for CombinatorialSeedGneratorFromPixel
-            // -- also called from RegionalPixelSeedGeneratorFromTrk-EDProducer
-            string TTRHBuilder =  "WithTrackAngle" # SeedFromConsecutiveHits  
-        }
-     }
-
+    }
 }
