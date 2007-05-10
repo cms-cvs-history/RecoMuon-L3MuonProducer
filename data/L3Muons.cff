@@ -20,9 +20,8 @@ replace muonCkfTrajectoryBuilder.ComponentName = "muonCkfTrajectoryBuilder"
 replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
 replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =5
 
-es_module ttrhb4Pixel = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
-replace ttrhb4Pixel.StripCPE = "Fake"
-replace ttrhb4Pixel.ComponentName = "PixelTTRHBuilderWithoutAngle"
+include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
+include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"

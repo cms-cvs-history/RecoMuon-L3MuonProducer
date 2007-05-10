@@ -50,10 +50,10 @@ module L3Muons = L3MuonProducer {
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}		
 	
-	include "RecoMuon/TrackerSeedGenerator/data/TrackerSeedGeneratorBC.cfi"
-       #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelPairs.cfi"
-       #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelTriplets.cfi"
-       #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearch.cfi"
+	#include "RecoMuon/TrackerSeedGenerator/data/TrackerSeedGeneratorBC.cfi"
+      include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelPairs.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelTriplets.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearch.cfi"
 	
 	PSet MuonRSBuilder = {
            #category: MuonRSTrajectoryBuilder
