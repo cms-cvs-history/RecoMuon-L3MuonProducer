@@ -52,6 +52,7 @@ module L3Muons = L3MuonProducer {
 	
 	#include "RecoMuon/TrackerSeedGenerator/data/TrackerSeedGeneratorBC.cfi"
       include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelPairs.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPropagation.cfi"
       #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelTriplets.cfi"
       #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearch.cfi"
 	
