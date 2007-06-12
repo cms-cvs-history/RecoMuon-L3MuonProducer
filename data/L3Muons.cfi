@@ -44,10 +44,8 @@ module L3Muons = L3MuonProducer {
 	}	
 	
 	PSet RefitterParameters = {
-	    string InPropagatorAlongMom = "PropagatorWithMaterial"
-	    string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
-	    string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
-	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
+	    string AlongMomentumPropagator = "SmartPropagatorAny"
+	    string OppositeToMomentumPropagator = "SmartPropagatorAnyOpposite"
 	}		
 	
 	#include "RecoMuon/TrackerSeedGenerator/data/TrackerSeedGeneratorBC.cfi"
