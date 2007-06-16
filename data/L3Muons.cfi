@@ -21,7 +21,7 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
-	string KFFitter = "KFFitter"
+	string KFFitter = "L3MuKFFitter"
 	
 	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
 	string TrackerPropagator = "SteppingHelixPropagatorAny"

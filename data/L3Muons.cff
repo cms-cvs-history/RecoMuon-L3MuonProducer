@@ -20,6 +20,31 @@ replace muonCkfTrajectoryBuilder.ComponentName = "muonCkfTrajectoryBuilder"
 replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
 replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =5
 
+es_module Chi2EstimatorForL3Refit = Chi2MeasurementEstimatorESProducer
+{
+  string ComponentName = "Chi2EstimatorForL3Refit"
+  double MaxChi2 = 100000.
+  double nSigma = 3.
+}
+
+es_module L3MuKFFitter = KFTrajectoryFitterESProducer
+{
+    string ComponentName = "L3MuKFFitter"
+    
+    string Propagator = "SmartPropagatorAny"
+    string Updator = "KFUpdator"
+    string Estimator = "Chi2EstimatorForL3Refit"
+}
+
+es_module L3MuKFSmoother = KFTrajectorySmootherESProducer
+{
+    string ComponentName = "L3MuKFSmoother"
+    
+    string Propagator = "SmartPropagatorOpposite"
+    string Updator = "KFUpdator"
+    string Estimator = "Chi2EstimatorForL3Refit"
+}
+
 include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
 include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
 
