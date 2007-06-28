@@ -21,6 +21,7 @@ module L3Muons = L3MuonProducer {
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
+#	string TkTrackBuilder = "muonRSTrajectoryBuilder"
 	string KFFitter = "L3MuKFFitter"
 	
 	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
@@ -52,27 +53,9 @@ module L3Muons = L3MuonProducer {
       include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelPairs.cfi"
       #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPropagation.cfi"
       #include  "RecoMuon/TrackerSeedGenerator/data/TSGFromPixelTriplets.cfi"
-      #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearch.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearchIO.cfi"
+      #include  "RecoMuon/TrackerSeedGenerator/data/TSGForRoadSearchOI.cfi"
 	
-	PSet MuonRSBuilder = {
-           #category: MuonRSTrajectoryBuilder
-	    string propagatorName = "SteppingHelixPropagatorAny"
-	    
-	    double maxChi2Road = 40.0
-	    double maxChi2Hit = 40.0
-	    
-	    uint32 maxTrajectories = 30
-	    
-	    bool dynamicMaxNumberOfHitPerModule = true
-	    vuint32 maxTrajectoriesThreshold = { 10, 25 }
-	    vuint32 numberOfHitPerModuleThreshold = { 3, 1 }
-	    uint32 numberOfHitPerModule = 1000 #no cut then
-	    
-	    uint32 minNumberOfHitOnCandidate = 4
-	    bool outputAllTraj =true
-	    
-	    bool debug = false
-	}
 
 	PSet RegionBuilderParameters = {}	
 

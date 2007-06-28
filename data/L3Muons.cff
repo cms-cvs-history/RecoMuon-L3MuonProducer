@@ -14,11 +14,24 @@ include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
 
-include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
-es_module muonCkfTrajectoryBuilder = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
-replace muonCkfTrajectoryBuilder.ComponentName = "muonCkfTrajectoryBuilder"
-replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
-replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =5
+include "RecoMuon/GlobalTrackFinder/data/MuonCkfTrajectoryBuilderESProducer.cff"
+include "RecoMuon/GlobalTrackFinder/data/MuonRSTrajectoryBuilderESProducer.cff"
+
+es_module Chi2EstimatorForL3Refit = Chi2MeasurementEstimatorESProducer
+{
+  string ComponentName = "Chi2EstimatorForL3Refit"
+  double MaxChi2 = 100000.
+  double nSigma = 3.
+}
+
+es_module L3MuKFFitter = KFTrajectoryFitterESProducer
+{
+    string ComponentName = "L3MuKFFitter"
+    
+    string Propagator = "SmartPropagatorAny"
+    string Updator = "KFUpdator"
+    string Estimator = "Chi2EstimatorForL3Refit"
+}
 
 es_module Chi2EstimatorForL3Refit = Chi2MeasurementEstimatorESProducer
 {
