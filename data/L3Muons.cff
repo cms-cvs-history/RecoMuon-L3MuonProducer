@@ -40,6 +40,8 @@ es_module L3MuKFSmoother = KFTrajectorySmootherESProducer
     string Propagator = "SmartPropagatorOpposite"
     string Updator = "KFUpdator"
     string Estimator = "Chi2EstimatorForL3Refit"
+
+    double errorRescaling = 100.
 }
 
 include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
