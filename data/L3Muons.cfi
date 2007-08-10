@@ -43,6 +43,7 @@ module L3Muons = L3MuonProducer {
 	    string TrackerRecHitBuilder = "WithTrackAngle"
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string RefitDirection = "insideOut"
+	    bool RefitRPCHits = true
 	}	
 	
 	PSet RefitterParameters = {
