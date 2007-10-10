@@ -49,10 +49,10 @@ es_module L3MuKFSmoother = KFTrajectorySmootherESProducer
 
 include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
 include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
+include "RecoTracker/TkSeedingLayers/data/MixedLayerPairs.cfi"
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
 
 include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/L3MuonProducer/data/L3Muons.cfi"
-
