@@ -34,6 +34,7 @@ es_module L3MuKFFitter = KFTrajectoryFitterESProducer
     string Propagator = "SmartPropagatorAny"
     string Updator = "KFUpdator"
     string Estimator = "Chi2EstimatorForL3Refit"
+    int32 minHits = 3
 }
 
 es_module L3MuKFSmoother = KFTrajectorySmootherESProducer
@@ -49,10 +50,10 @@ es_module L3MuKFSmoother = KFTrajectorySmootherESProducer
 
 include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
 include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
+include "RecoTracker/TkSeedingLayers/data/MixedLayerPairs.cfi"
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
 
 include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/L3MuonProducer/data/L3Muons.cfi"
-
