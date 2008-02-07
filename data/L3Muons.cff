@@ -18,8 +18,6 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 include "RecoMuon/L3TrackFinder/data/MuonCkfTrajectoryBuilderESProducer.cff"
 include "RecoMuon/L3TrackFinder/data/MuonRoadTrajectoryBuilderESProducer.cff"
 
-include "RecoMuon/GlobalTrackingTools/data/GlobalTrajectoryBuilderCommon.cff"
-
 es_module Chi2EstimatorForL3Refit = Chi2MeasurementEstimatorESProducer
 {
   string ComponentName = "Chi2EstimatorForL3Refit"
