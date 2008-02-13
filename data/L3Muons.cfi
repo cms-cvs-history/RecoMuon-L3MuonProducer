@@ -6,7 +6,6 @@ include "RecoMuon/GlobalTrackingTools/data/GlobalTrajectoryBuilderCommon.cff"
 module L3Muons = L3MuonProducer {
 
     InputTag MuonCollectionLabel = hltL2Muons:UpdatedAtVtx
-    bool MuonTrajectoryAvailable = true
     
     using MuonServiceProxy
     
@@ -15,7 +14,6 @@ module L3Muons = L3MuonProducer {
     PSet L3TrajBuilderParameters = {
 	using GlobalTrajectoryBuilderCommon
 	
-	bool TkTrajectoryAvailable = false
 	string KFFitter = "L3MuKFFitter"
 	
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
