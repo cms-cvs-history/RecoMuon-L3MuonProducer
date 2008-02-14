@@ -35,17 +35,6 @@ es_module L3MuKFFitter = KFTrajectoryFitterESProducer
     int32 minHits = 3
 }
 
-es_module L3MuKFSmoother = KFTrajectorySmootherESProducer
-{
-    string ComponentName = "L3MuKFSmoother"
-    
-    string Propagator = "SmartPropagatorOpposite"
-    string Updator = "KFUpdator"
-    string Estimator = "Chi2EstimatorForL3Refit"
-
-    double errorRescaling = 100.
-}
-
 include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
 include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
 include "RecoTracker/TkSeedingLayers/data/MixedLayerPairs.cfi"
