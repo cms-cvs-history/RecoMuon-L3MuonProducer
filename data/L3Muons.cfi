@@ -16,8 +16,7 @@ module L3Muons = L3MuonProducer {
 	string StateOnTrackerBoundOutPropagator = "SmartPropagatorAny"
 
 	InputTag l3SeedLabel = hltL3TrajectorySeedFromL2
-#	InputTag tkTrajLabel = hltL3Trajectory
-#	InputTag tkTrackCandLabel = hltL3TrackCandidate
+	InputTag tkTrajLabel = hltL3Trajectory
 	
 	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 #	string TkTrackBuilder = "muonRSTrajectoryBuilder"
