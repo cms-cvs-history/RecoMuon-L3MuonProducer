@@ -43,4 +43,9 @@ include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
 
 include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
+replace KFFitterForRefitOutsideIn.Propagator = "SmartPropagatorAny"
+replace KFSmootherForRefitOutsideIn.Propagator = "SmartPropagator"
+replace KFFitterForRefitInsideOut.Propagator = "SmartPropagatorAny"
+replace KFSmootherForRefitInsideOut.Propagator = "SmartPropagatorAny"
+
 include "RecoMuon/L3MuonProducer/data/L3Muons.cfi"

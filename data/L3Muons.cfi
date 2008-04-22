@@ -13,7 +13,8 @@ module L3Muons = L3MuonProducer {
     PSet L3TrajBuilderParameters = {
 	using GlobalTrajectoryBuilderCommon
 	string KFFitter = "L3MuKFFitter"
-	string OutPropagator = "SmartPropagator"
+	string TransformerOutPropagator = "SmartPropagatorAny"
+	string MatcherOutPropagator = "SmartPropagator"
 
 	InputTag l3SeedLabel = "" //hltL3TrajectorySeedFromL2
 	InputTag tkTrajLabel = hltL3Trajectory
