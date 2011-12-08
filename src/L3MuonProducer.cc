@@ -5,8 +5,8 @@
  *   information,<BR>
  *   starting from a L2 reonstructed muon.
  *
- *   $Date: 2009/07/29 12:22:50 $
- *   $Revision: 1.14 $
+ *   $Date: 2009/07/29 12:26:48 $
+ *   $Revision: 1.15 $
  *   \author  A. Everett - Purdue University
  */
 
@@ -138,8 +138,16 @@ void L3MuonProducer::produce(Event& event, const EventSetup& eventSetup) {
       iii = updatedL2AssoMap->find(it->val);
       if (iii != iEnd ) tkUpdated = (*updatedL2AssoMap)[it->val] ;
     }
+
+    int etaFlip1 = ((tkUpdated.isNonnull() && tkRegular.isNonnull()) && ( (tkUpdated->eta() * tkRegular->eta() ) < 0)) ? -1 : 1; 
     
-    const reco::TrackRef tk = ( tkUpdated.isNonnull() ) ? tkUpdated : tkRegular ;      
+    double nSigma = 5.0;
+    double delta = fabs(tkRegular->qoverp() - tkUpdated->qoverp());
+    double threshold = nSigma * tkRegular->qoverpError();
+
+    int ptSigmaSwitch = delta > threshold ? -1 : 1;
+
+    const reco::TrackRef tk = ( tkUpdated.isNonnull() && ( etaFlip1==1 && ptSigmaSwitch==1 ) ) ? tkUpdated : tkRegular ;      
     
     MuonTrajectoryBuilder::TrackCand L2Cand = MuonTrajectoryBuilder::TrackCand((Trajectory*)(0),tk);
     if( traj->isValid() ) L2Cand.first = &*traj ;
